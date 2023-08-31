@@ -42,7 +42,7 @@ class WeatherForecastDialog extends ComponentDialog {
 
   async get(step) {
     const weather = await weatherService.askWearther(step.result);
-    await step.context.sendActivity(`The weather at ${ step._info.result }: ` + weather);
+    await step.context.sendActivity(`The weather at ${step._info.result}: ` + weather);
     await step.context.sendActivity('Thank you');
 
     return await step.endDialog();
@@ -50,6 +50,6 @@ class WeatherForecastDialog extends ComponentDialog {
 }
 // Add prompts
 module.exports = {
-    WeatherForecastDialog,
-    WEATHER_FORCAST_DIALOG
+  WeatherForecastDialog,
+  WEATHER_FORCAST_DIALOG
 };

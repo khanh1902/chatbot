@@ -47,15 +47,15 @@ class EducationDialog extends ComponentDialog {
     const userProfile = await this.dialog.conversationDataAccessor.get(step.context);
     userProfile.major = step.result;
 
-    await step.context.sendActivity(`I recieved your major is ${ step.result }`);
+    await step.context.sendActivity(`I recieved your major is ${step.result}`);
 
     return await step.next();
   }
 
   async askGraduated(step) {
     return await step.prompt(TEXT_PROMPT, {
-        prompt: 'have you graduated?'
-      });
+      prompt: 'have you graduated?'
+    });
   }
 
   async getGraduated(step) {
@@ -67,23 +67,23 @@ class EducationDialog extends ComponentDialog {
 
   async getInfor(step) {
     const userProfile = await this.dialog.conversationDataAccessor.get(step.context);
-    await step.context.sendActivity(`Your information is name: ${ userProfile.name }, age: ${ userProfile.age }, address: ${ userProfile.address }, major: ${ userProfile.major }`);
+    await step.context.sendActivity(`Your information is name: ${userProfile.name}, age: ${userProfile.age}, address: ${userProfile.address}, major: ${userProfile.major}`);
     return await step.next();
   }
 
   async askChooseWeather(step) {
     return await step.prompt(TEXT_PROMPT, {
-        prompt: 'Do you want to ask Weather?'
-      });
+      prompt: 'Do you want to ask Weather?'
+    });
   }
 
   async chooseWeathere(step) {
     step.values.isWeather = step.result.toLowerCase();
     if (step.values.isWeather === 'no') {
-        await step.context.sendActivity('Thank you');
-        return await step.endDialog();
+      await step.context.sendActivity('Thank you');
+      return await step.endDialog();
     } else if (step.values.isWeather === 'yes') {
-        return await step.replaceDialog(WEATHER_FORCAST_DIALOG);
+      return await step.replaceDialog(WEATHER_FORCAST_DIALOG);
     }
     return await step.endDialog();
   }
